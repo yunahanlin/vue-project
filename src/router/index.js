@@ -6,6 +6,8 @@ import Message from '../pages/message'
 import Mine from '../pages/my'
 import More from '../pages/more'
 import Login from '../pages/login'
+import Content from '../pages/content'
+import Publish from '../pages/publish'
 
 
 Vue.use(Router)
@@ -37,6 +39,16 @@ export default new Router({
       path: "/vue-home/dist/login",
       name: "login",
       component: Login
+    },
+    {
+      path: "/vue-home/dist/content",
+      name: "content",
+      component: Content
+    },
+    {
+      path: "/vue-home/dist/publish",
+      name: "publish",
+      component: Publish
     },
     {
       path: '/',

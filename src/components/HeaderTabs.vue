@@ -57,8 +57,9 @@ export default {
           styleObj: {
             background: '#C5C5C7'
           },
-          url: 'https://www.vue-js.com/api/v1/topics?tab=all',
-          page: 1
+          page: 1,
+          url: 'https://www.vue-js.com/api/v1/topics?tab=all' + '&page=' + this.page
+          
       }
   },
    // 先导航和渲染组件，然后在组件的 created 钩子中获取数据
@@ -77,7 +78,9 @@ export default {
           this.nomore = false //切换tab，重置
           this.activeTab = val
           this.url = 'https://www.vue-js.com/api/v1/topics?tab=' + val
+        //   this.urls = 'https://www.vue-js.com/api/v1/topics?tab=' + val + '&page=' + this.page
            this.getData()
+        //    loadMore (val) 
       },
       getData () {
           let that = this
@@ -98,6 +101,7 @@ export default {
                   let that = this
                   axios.get(url).then(function (response) {
                       arr = response.data.data
+                      console.log(arr)
                       if (arr.length === 0) {
                           that.loading = false
                           that.nomore = true
@@ -109,7 +113,7 @@ export default {
                        arr = []
                   })
                   this.loading = false
-              }, 1000);
+              }, 600);
           }
           
       }
@@ -137,7 +141,7 @@ export default {
             margin-top: 0.3rem;
         }
     }
-
+    
     .material-icons {
         vertical-align: middle;
         padding-right: 0.16rem;
